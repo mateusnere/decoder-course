@@ -69,6 +69,8 @@ public class CourseModel implements Serializable {
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "course", fetch = FetchType.LAZY)
+    // @OneToMany(mappedBy = "course", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true) Essas propriedades (cascade e orphanRemoval) transfere a responsabilidade de deletar os módulos vinculados ao curso para o JPA
     @Fetch(FetchMode.SUBSELECT)
+    // @OnDelete(action = OnDeleteAction.CASCADE) - Essa anotação transfere a responsabilidade de deletar os módulos vinculados ao curso para o banco de dados
     private Set<ModuleModel> modules;
 }
