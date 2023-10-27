@@ -13,7 +13,7 @@ import lombok.Data;
 @Data
 public class CourseDTO {
 
-    @NotBlank
+    @NotBlank(message = "Nome não pode ser vazio!")
     private String name;
     
     @NotBlank
