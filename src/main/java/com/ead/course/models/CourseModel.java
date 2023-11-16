@@ -73,4 +73,9 @@ public class CourseModel implements Serializable {
     @Fetch(FetchMode.SUBSELECT)
     // @OnDelete(action = OnDeleteAction.CASCADE) - Essa anotação transfere a responsabilidade de deletar os módulos vinculados ao curso para o banco de dados
     private Set<ModuleModel> modules;
+
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @OneToMany(mappedBy = "course", fetch = FetchType.LAZY)
+    private Set<CourseUserModel> coursesUsers;
+
 }
